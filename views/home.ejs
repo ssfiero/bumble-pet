@@ -1,0 +1,59 @@
+<!-- home.ejs page -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- head tags -->
+    <%- include('partials/header') %>
+  </head>
+
+  <body>
+
+    <div id="title">
+      <h2>Bumble Pet</h2>
+    </div>
+
+    <section id="loginbox">
+
+      <div class="login">
+        <div class="row log">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="username" type="text" name="username" class="validate">
+                <label for="username">Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">lock_open</i>
+                <input id="password" type="password" name="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit" formaction="/" formmethod="post">Sign In
+              <i class="material-icons right">send</i>
+            </button>
+          </form>
+
+          <h5>Sign up for a new account</h5>
+          <a href="/signup" class="btn waves-effect waves-light">Sign Up</a>
+
+        </div>
+      </div>
+
+    </section>
+
+    <section id="continuebox">
+
+      <h5>Continue without signing in</h5>
+      <a href="/find" class="btn waves-effect waves-light">Continue</a>
+
+    </section>
+
+    <!-- footer tags -->
+    <%- include('partials/footer') %>
+  </body>
+</html>

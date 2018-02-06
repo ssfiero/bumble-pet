@@ -1,0 +1,62 @@
+<!-- signup.ejs page -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- head tags -->
+    <%- include('partials/header') %>
+  </head>
+
+  <body id="signUp">
+
+    <div id="title">
+      <h2>Bumble Pet</h2>
+    </div>
+
+    <section id="signupbox">
+
+      <div class="login">
+        <div class="row log">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="username" type="text" name="username" class="validate">
+                <label for="name">Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">lock_open</i>
+                <input id="password" type="password" name="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">lock_open</i>
+                <input id="confirmPassword" type="password" name="confirmPassword" class="validate">
+                <label for="confirmPassword">Confirm Password</label>
+              </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit" formaction="/signup" formmethod="post">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </form>
+
+          <a href="/" class="btn waves-effect waves-light">Home</a>
+
+        </div>
+      </div>
+
+    </section>
+
+
+
+    <!-- footer tags -->
+    <%- include('partials/footer') %>
+  </body>
+
+</html>

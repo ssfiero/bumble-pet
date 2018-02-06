@@ -4,10 +4,20 @@ const knex = require('knex')(config);
 const path = require('path');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 9001;
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 
+// const serviceAccount = JSON.parse(process.env.config);
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: ""
+// });
+//
+// app.use(function(req, res, next) {
+//   res.locals.db = admin.database();
+//   next();
+// })
 
 
 // middleware
@@ -30,8 +40,10 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 
-let loginRoute = require('./routes/loginRoute.js');
-let signupRoutes = require('./routes/signupRoutes.js');
+// let signupRoute = require('./routes/signupRoute.js');
+let findRoute = require('./routes/findRoute.js');
+// let matchRoute = require('./routes/matchRoute.js');
+// let favsRoute = require('./routes/favsRoute.js');
 
 
 // render home page
@@ -56,8 +68,10 @@ app.get('/', function(req, res) {
 // });
 //
 //
-// app.use(loginRoute);
-// app.use(signupRoutes);
+// app.use(signupRoute);
+app.use(findRoute);
+// app.use(matchRoute);
+// app.use(favsRoute);
 //
 //
 // app.use(function(req, res, next) {
