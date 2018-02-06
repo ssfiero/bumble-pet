@@ -8,16 +8,6 @@ const port = process.env.PORT || 9001;
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 
-// const serviceAccount = JSON.parse(process.env.config);
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: ""
-// });
-//
-// app.use(function(req, res, next) {
-//   res.locals.db = admin.database();
-//   next();
-// })
 
 
 // middleware
@@ -42,7 +32,7 @@ app.set('view engine', 'ejs');
 
 // let signupRoute = require('./routes/signupRoute.js');
 let findRoute = require('./routes/findRoute.js');
-// let matchRoute = require('./routes/matchRoute.js');
+let matchRoute = require('./routes/matchRoute.js');
 // let favsRoute = require('./routes/favsRoute.js');
 
 
@@ -70,7 +60,7 @@ app.get('/', function(req, res) {
 //
 // app.use(signupRoute);
 app.use(findRoute);
-// app.use(matchRoute);
+app.use(matchRoute);
 // app.use(favsRoute);
 //
 //

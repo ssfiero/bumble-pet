@@ -1,4 +1,4 @@
-# bumble-pet
+# Bumble Pet
 It's like bumble but for pets.
 
 
@@ -10,4 +10,4 @@ Knex database seed: ```knex seed:run```
 
 PostgreSQL database: ```psql bumblepet```
 
-Server: ```node server.js```
+Server: ```nodemon```
