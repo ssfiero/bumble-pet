@@ -93,6 +93,7 @@
               console.log('This is the array of pets: ', pets);
               console.log('Length of the pets array: ', pets.pet.length);
 
+              let searchedPets = $();
               // Loop through array pf pets
               for (var i = 0; i < pets.pet.length; i++) {
                 // console.log('In the loop');
@@ -103,6 +104,24 @@
         				var img = response.petfinder.pets.pet[i].media.photos.photo[0].$t;
         				var id = response.petfinder.pets.pet[i].id.$t;
 
+                // Loop through breeds to show multiple breeds of single breed
+                if (Array.isArray(response.petfinder.pets.pet[i].breeds.breed)) {
+                  for (var j = 0; j < pets.pet[i].breeds.breed.length; j++) {
+                    var breed1 = response.petfinder.pets.pet[i].breeds.breed[0].$t;
+                    var breed2 = response.petfinder.pets.pet[i].breeds.breed[1].$t;
+
+                    var breed = breed1 + ' & ' + breed2;
+                    console.log('Multiple breeds: ', breed);
+                  }
+                } else {
+                  var breed = response.petfinder.pets.pet[i].breeds.breed.$t;
+                  console.log('Single breed: ', breed);
+                }
+
+        				// var breed = JSON.stringify(response.petfinder.pets.pet[i].breeds.breed.$t);
+                // // console.log('Breeds: ', response.petfinder.pets.pet[i].breeds.breed.$t);
+                // console.log('Breeds: ', breed);
+
 
         				var newName = document.createElement('h4');
         				var newDiv = document.createElement('div');
@@ -111,6 +130,10 @@
         				var newImg = document.createElement('img');
         				newImg.src = img;
 
+                var newBreed = document.createElement('h5');
+                newBreed.textContent = breed;
+
+
         				var list = document.createElement("ul");
         				list.setAttribute("id", "List");
         				document.body.appendChild(list);
@@ -118,6 +141,8 @@
         				newDiv.appendChild(newName);
         				list.appendChild(newDiv);
         				list.appendChild(newImg);
+        				list.appendChild(newBreed);
+
               }
 
       			}
