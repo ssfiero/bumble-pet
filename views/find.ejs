@@ -52,7 +52,11 @@
       <form>
 				<label for="zip">Zip</label>
 				<input type="text" name="zip" id="zip">
-				<input type="submit" id="submitZip">
+
+        <label for="animalType">Type of Animal</label>
+				<input type="text" name="animalType" id="animalType">
+
+				<input type="submit" id="submitSearch">
 		  </form>
 
     </section>
@@ -64,11 +68,16 @@
       document.addEventListener('DOMContentLoaded', bindButtons);
 
       function bindButtons(){
-      	document.getElementById('submitZip').addEventListener('click', function(event){
+      	document.getElementById('submitSearch').addEventListener('click', function(event){
       		event.preventDefault();
       		var zip = document.getElementById('zip').value; // get zip code from the form
           console.log('Zip entered in form: ', zip);
           console.log(typeof zip);
+
+      		var animalType = document.getElementById('animalType').value; // get type of animal from the form
+          console.log('Animal type entered in form: ', animalType);
+          console.log(typeof animalType);
+
       		// var url = 'https://api.petfinder.com/pet.getRandom';
       		var url = 'https://api.petfinder.com/pet.find';
 
@@ -78,7 +87,7 @@
       			dataType: "jsonp",
       			data: {
       				key: API_key,
-      				animal: 'dog',
+      				'animal': animalType,
       				'location': zip,
               count: 25,
       				output: 'basic',
@@ -122,7 +131,7 @@
                 var description = response.petfinder.pets.pet[i].description.$t;
 
 
-                // Create and append elements to page
+                // Create new elements
                 var newDiv = document.createElement('div');
 
                 var newImg = document.createElement('img');
@@ -144,11 +153,11 @@
                 newDescription.textContent = 'Description: ' + description;
 
 
+                // Append new elements to page
         				var list = document.createElement("ul");
         				list.setAttribute("id", "List");
         				document.body.appendChild(list);
 
-        				// newDiv.appendChild(newName);
         				list.appendChild(newDiv);
         				list.appendChild(newImg);
                 list.appendChild(newName);
