@@ -104,25 +104,25 @@
         				var img = response.petfinder.pets.pet[i].media.photos.photo[0].$t;
         				var id = response.petfinder.pets.pet[i].id.$t;
 
-                // Loop through breeds to show multiple breeds of single breed
+                // Loop through breeds to show multiple breeds or single breed
                 if (Array.isArray(response.petfinder.pets.pet[i].breeds.breed)) {
                   for (var j = 0; j < pets.pet[i].breeds.breed.length; j++) {
                     var breed1 = response.petfinder.pets.pet[i].breeds.breed[0].$t;
                     var breed2 = response.petfinder.pets.pet[i].breeds.breed[1].$t;
-
-                    var breed = breed1 + ' & ' + breed2;
+                    var breed = 'Breed: ' + breed1 + ' & ' + breed2;
                     console.log('Multiple breeds: ', breed);
                   }
                 } else {
-                  var breed = response.petfinder.pets.pet[i].breeds.breed.$t;
+                  var breed = 'Breed: ' + response.petfinder.pets.pet[i].breeds.breed.$t;
                   console.log('Single breed: ', breed);
                 }
 
-        				// var breed = JSON.stringify(response.petfinder.pets.pet[i].breeds.breed.$t);
-                // // console.log('Breeds: ', response.petfinder.pets.pet[i].breeds.breed.$t);
-                // console.log('Breeds: ', breed);
+                var age = response.petfinder.pets.pet[i].age.$t;
+                var sex = response.petfinder.pets.pet[i].sex.$t;
+                var description = response.petfinder.pets.pet[i].description.$t;
 
 
+                // Create and append elements to page
         				var newName = document.createElement('h4');
         				var newDiv = document.createElement('div');
         				newName.textContent = dogName;
@@ -133,6 +133,15 @@
                 var newBreed = document.createElement('h5');
                 newBreed.textContent = breed;
 
+                var newAge = document.createElement('h6');
+                newAge.textContent = 'Age: ' + age;
+
+                var newSex = document.createElement('h6');
+                newSex.textContent = 'Sex: ' + sex;
+
+                var newDescription = document.createElement('h6');
+                newDescription.textContent = 'Description: ' + description;
+
 
         				var list = document.createElement("ul");
         				list.setAttribute("id", "List");
@@ -142,6 +151,9 @@
         				list.appendChild(newDiv);
         				list.appendChild(newImg);
         				list.appendChild(newBreed);
+        				list.appendChild(newAge);
+        				list.appendChild(newSex);
+        				list.appendChild(newDescription);
 
               }
 
