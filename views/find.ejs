@@ -100,8 +100,8 @@
                 console.log(pets.pet[i]);
 
 
-                var dogName = response.petfinder.pets.pet[i].name.$t;
         				var img = response.petfinder.pets.pet[i].media.photos.photo[0].$t;
+                var dogName = response.petfinder.pets.pet[i].name.$t;
         				var id = response.petfinder.pets.pet[i].id.$t;
 
                 // Loop through breeds to show multiple breeds or single breed
@@ -123,12 +123,13 @@
 
 
                 // Create and append elements to page
-        				var newName = document.createElement('h4');
-        				var newDiv = document.createElement('div');
-        				newName.textContent = dogName;
+                var newDiv = document.createElement('div');
 
-        				var newImg = document.createElement('img');
+                var newImg = document.createElement('img');
         				newImg.src = img;
+
+        				var newName = document.createElement('h4');
+        				newName.textContent = dogName;
 
                 var newBreed = document.createElement('h5');
                 newBreed.textContent = breed;
@@ -147,9 +148,10 @@
         				list.setAttribute("id", "List");
         				document.body.appendChild(list);
 
-        				newDiv.appendChild(newName);
+        				// newDiv.appendChild(newName);
         				list.appendChild(newDiv);
         				list.appendChild(newImg);
+                list.appendChild(newName);
         				list.appendChild(newBreed);
         				list.appendChild(newAge);
         				list.appendChild(newSex);
