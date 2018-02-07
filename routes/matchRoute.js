@@ -7,15 +7,12 @@ const router = express.Router();
 
 
 
+
+
+
+
 router.get('/match', function(req, res) {
-  // console.log('In find route: ', req.session.userid);
-  // knex('pets')
-  // .where('user_id', req.session.userid)
-  // .then(function(pets) {
-  //   console.log('got data: ', pets);
-    // res.render('find.ejs', {pets});
-    res.render('match.ejs');
-  // })
+  res.render('match.ejs');
 });
 
 

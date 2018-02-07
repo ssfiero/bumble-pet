@@ -11,33 +11,33 @@
   <body id="find">
 
     <div id="title">
-      <h2>Find a Pet</h2>
+      <h2>Find a Pet Near You</h2>
     </div>
 
     <section id="findbox">
 
-      <div class="login">
+      <!-- <div class="login">
         <div class="row log">
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">account_circle</i>
                 <input id="username" type="text" name="username" class="validate">
-                <label for="name">Name</label>
+                <label for="name">Text field</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">lock_open</i>
                 <input id="password" type="password" name="password" class="validate">
-                <label for="password">Password</label>
+                <label for="password">Text field</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">lock_open</i>
                 <input id="confirmPassword" type="password" name="confirmPassword" class="validate">
-                <label for="confirmPassword">Confirm Password</label>
+                <label for="confirmPassword">Text field</label>
               </div>
             </div>
 
@@ -45,13 +45,87 @@
               <i class="material-icons right">send</i>
             </button>
           </form>
-
-
         </div>
-      </div>
+      </div> -->
+
+
+      <form>
+				<label for="zip">Zip</label>
+				<input type="text" name="zip" id="zip">
+				<input type="submit" id="submitZip">
+		  </form>
 
     </section>
 
+
+    <script>
+      var API_key = '39de55744f65f1be6cd197c92c98d2c5';
+
+      document.addEventListener('DOMContentLoaded', bindButtons);
+
+      function bindButtons(){
+      	document.getElementById('submitZip').addEventListener('click', function(event){
+      		event.preventDefault();
+      		var zip = document.getElementById('zip').value; // get zip code from the form
+          console.log('Zip entered in form: ', zip);
+          console.log(typeof zip);
+      		// var url = 'https://api.petfinder.com/pet.getRandom';
+      		var url = 'https://api.petfinder.com/pet.find';
+
+      		$.ajax({
+      			url: url,
+      			jsonp: "callback",
+      			dataType: "jsonp",
+      			data: {
+      				key: API_key,
+      				animal: 'dog',
+      				'location': zip,
+              count: 25,
+      				output: 'basic',
+      				format: 'json'
+      			},
+
+      			success: function(response) {
+      				console.log(response);
+
+              // Array of pets
+              var pets = response.petfinder.pets;
+              console.log('This is the array of pets: ', pets);
+              console.log('Length of the pets array: ', pets.pet.length);
+
+              // Loop through array pf pets
+              for (var i = 0; i < pets.pet.length; i++) {
+                // console.log('In the loop');
+                console.log(pets.pet[i]);
+
+
+                var dogName = response.petfinder.pets.pet[i].name.$t;
+        				var img = response.petfinder.pets.pet[i].media.photos.photo[0].$t;
+        				var id = response.petfinder.pets.pet[i].id.$t;
+
+
+        				var newName = document.createElement('h4');
+        				var newDiv = document.createElement('div');
+        				newName.textContent = dogName;
+
+        				var newImg = document.createElement('img');
+        				newImg.src = img;
+
+        				var list = document.createElement("ul");
+        				list.setAttribute("id", "List");
+        				document.body.appendChild(list);
+
+        				newDiv.appendChild(newName);
+        				list.appendChild(newDiv);
+        				list.appendChild(newImg);
+              }
+
+      			}
+      		});
+      	})
+
+      }
+    </script>
 
 
     <!-- footer tags -->
