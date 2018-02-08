@@ -30,10 +30,12 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 
-// let signupRoute = require('./routes/signupRoute.js');
+let signinRoute = require('./routes/signinRoute.js');
+let signupRoute = require('./routes/signupRoute.js');
 let findRoute = require('./routes/findRoute.js');
 let matchRoute = require('./routes/matchRoute.js');
 // let favsRoute = require('./routes/favsRoute.js');
+let signoutRoute = require('./routes/signoutRoute.js');
 
 
 // render home page
@@ -42,40 +44,42 @@ app.get('/', function(req, res) {
 });
 
 
-// // default password = user's name
-// app.use(session({
-//   secret: 'as2OaDcE83sLd9aiFk4Px',
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: {
-//     secure: false
-//   }
-// }));
-//
-// app.use(function(req, res, next) {
-//   console.log('Session is: ', req.session);
-//   next();
-// });
-//
-//
-// app.use(signupRoute);
+// default password = user's name
+app.use(session({
+  secret: 'asScD53mo9eHo7meXk',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: false
+  }
+}));
+
+
+app.use(function(req, res, next) {
+  console.log('Session is: ', req.session);
+  next();
+});
+
+
+app.use(signinRoute);
+app.use(signupRoute);
 app.use(findRoute);
 app.use(matchRoute);
+
+
+app.use(function(req, res, next) {
+  if(!req.session.username) {
+    console.log('redirecting');
+    res.redirect('/')
+  } else {
+    console.log('not redirecting');
+    next();
+  }
+});
+
+
 // app.use(favsRoute);
-//
-//
-// app.use(function(req, res, next) {
-//   if(!req.session.username) {
-//     console.log('redirecting');
-//     res.redirect('/')
-//   } else {
-//     console.log('not redirecting');
-//     next();
-//   }
-// });
-//
-//
-// app.use(logoutRoute);
+app.use(signoutRoute);
 
 
 app.use(function(req, res) {
