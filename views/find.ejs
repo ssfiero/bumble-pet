@@ -16,53 +16,49 @@
 
     <section id="findbox">
 
-      <!-- <div class="login">
+      <div class="find">
         <div class="row log">
-          <form class="col s12">
+
+          <form class="col s12" method="GET">
             <div class="row">
               <div class="input-field col s12">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="username" type="text" name="username" class="validate">
-                <label for="name">Text field</label>
+                <i class="material-icons prefix">lock_open</i>
+                <input id="animalType" type="text" name="animalType">
+                <label for="animalType">Type of Animal (barnyard, bird, cat, dog, horse, reptile, smallfurry)</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">lock_open</i>
-                <input id="password" type="password" name="password" class="validate">
-                <label for="password">Text field</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">lock_open</i>
-                <input id="confirmPassword" type="password" name="confirmPassword" class="validate">
-                <label for="confirmPassword">Text field</label>
+                <input id="csz" type="text" name="csz">
+                <label for="csz">Enter a City, State or Zip</label>
               </div>
             </div>
 
-            <button class="btn waves-effect waves-light" type="submit" formaction="/match" formmethod="post">Submit
+            <button class="btn waves-effect waves-light" type="submit" formaction="/match" formmethod="GET">Find
               <i class="material-icons right">send</i>
             </button>
           </form>
+
         </div>
-      </div> -->
+      </div>
 
 
-      <form>
-				<label for="zip">Zip</label>
-				<input type="text" name="zip" id="zip">
-
+      <!-- <form>
         <label for="animalType">Type of Animal</label>
 				<input type="text" name="animalType" id="animalType">
 
+				<label for="csz">Enter a City, State or Zip</label>
+				<input type="text" name="csz" id="csz">
+
 				<input type="submit" id="submitSearch">
-		  </form>
+        <input type="hidden" name="redirect" value="http://localhost:9001/match">
+		  </form> -->
 
     </section>
 
 
-    <script>
+    <!-- <script>
       var API_key = '39de55744f65f1be6cd197c92c98d2c5';
 
       document.addEventListener('DOMContentLoaded', bindButtons);
@@ -70,9 +66,10 @@
       function bindButtons(){
       	document.getElementById('submitSearch').addEventListener('click', function(event){
       		event.preventDefault();
-      		var zip = document.getElementById('zip').value; // get zip code from the form
-          console.log('Zip entered in form: ', zip);
-          console.log(typeof zip);
+
+      		var csz = document.getElementById('csz').value; // get city, state or zip from the form
+          console.log('City, State or Zip entered in form: ', csz);
+          console.log(typeof csz);
 
       		var animalType = document.getElementById('animalType').value; // get type of animal from the form
           console.log('Animal type entered in form: ', animalType);
@@ -88,7 +85,7 @@
       			data: {
       				key: API_key,
       				'animal': animalType,
-      				'location': zip,
+      				'location': csz,
               count: 25,
       				output: 'basic',
       				format: 'json'
@@ -129,6 +126,12 @@
                 var age = response.petfinder.pets.pet[i].age.$t;
                 var sex = response.petfinder.pets.pet[i].sex.$t;
                 var description = response.petfinder.pets.pet[i].description.$t;
+                if (response.petfinder.pets.pet[i].contact.phone.$t == undefined) {
+                  var contactPhone = 'not provided';
+                } else {
+                  var contactPhone = response.petfinder.pets.pet[i].contact.phone.$t;
+                }
+                var contactEmail = response.petfinder.pets.pet[i].contact.email.$t;
 
 
                 // Create new elements
@@ -152,6 +155,15 @@
                 var newDescription = document.createElement('h6');
                 newDescription.textContent = 'Description: ' + description;
 
+                var newContact = document.createElement('h6');
+                newContact.textContent = 'Contact:';
+
+                var newContactPhone = document.createElement('h6');
+                newContactPhone.textContent = 'Phone: ' + contactPhone;
+
+                var newContactEmail = document.createElement('h6');
+                newContactEmail.textContent = 'Email: ' + contactEmail;
+
 
                 // Append new elements to page
         				var list = document.createElement("ul");
@@ -165,6 +177,9 @@
         				list.appendChild(newAge);
         				list.appendChild(newSex);
         				list.appendChild(newDescription);
+        				list.appendChild(newContact);
+        				list.appendChild(newContactPhone);
+        				list.appendChild(newContactEmail);
 
               }
 
@@ -173,7 +188,7 @@
       	})
 
       }
-    </script>
+    </script> -->
 
 
     <!-- footer tags -->
