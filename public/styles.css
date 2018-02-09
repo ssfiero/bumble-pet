@@ -145,13 +145,29 @@ Match page
   font-family: 'Yellowtail';
   font-size: 65px;
   margin-left: -21px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+button.btn.waves-effect.waves-light.match {
+  margin: auto;
+  /* display: inline-block; */
+  display: block;
+}
+
+button.btn.waves-effect.waves-light.match.bottom {
+  /* margin-left: 15px; */
+  margin-top: 15px;
 }
 
 .slides {
   margin-bottom: 50px;
   border: 3px solid orange;
   border-radius: 8px;
+  background: linear-gradient(yellow, orange);
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  background-size: 150%;
+  /* background-position: top; */
 }
 
 img {

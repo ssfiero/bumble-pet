@@ -1,5 +1,17 @@
 <!-- match.ejs page -->
 
+<!-- Test matches:
+
+dog - Austin, TX
+cat - Houston, TX
+barnyard - Denver, CO
+reptile - Miami, FL
+smallfurry - Phoenix, AZ
+
+-->
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +26,9 @@
     <div id="titleMatch">
       <h2>Find your match</h2>
 
-      <button class="btn waves-effect waves-light"><a href="/signout">Signout</a></button>
+      <button class="btn waves-effect waves-light match"><a href="/find">Back to Search</a></button>
+
+      <button class="btn waves-effect waves-light match bottom"><a href="/signout">Signout</a></button>
     </div>
 
 
@@ -112,21 +126,21 @@
                 console.log('Array of images: ', images);
 
                 // Loop through array of images
-                images.forEach(function(image) {
-                  console.log('Images?: ', image);
-                  console.log(typeof image);
-                  // console.log('Object entries: ', Object.entries(image));
-                  // console.log('Object keys: ', Object.keys(image));
-                  // console.log('Object values: ', Object.values(image));
-                  // console.log(Object.entries(image));
-                  images.filter(function(imageobj){
-                    if (imageobj['@size'] == 'pn') { // or 'x'
-                      console.log('Filtered image: ', imageobj.$t);
-                      imgFinal.push(imageobj.$t);
-                      return imageobj;
-                    }
-                  })
-
+                // images.forEach(function(image) {
+                //   console.log('Images?: ', image);
+                //   console.log(typeof image);
+                //   // console.log('Object entries: ', Object.entries(image));
+                //   // console.log('Object keys: ', Object.keys(image));
+                //   // console.log('Object values: ', Object.values(image));
+                //   // console.log(Object.entries(image));
+                // })
+                images.filter(function(imageobj){
+                  if (imageobj['@size'] == 'pn') { // or 'x' or 'pnt'
+                    console.log('Filtered image: ', imageobj.$t);
+                    imgFinal.push(imageobj.$t);
+                    console.log('Final image: ', imgFinal);
+                    return imageobj;
+                  }
                 })
 
 
@@ -158,6 +172,7 @@
                   var contactPhone = response.petfinder.pets.pet[i].contact.phone.$t;
                 }
                 var contactEmail = response.petfinder.pets.pet[i].contact.email.$t;
+                var contactCityState = response.petfinder.pets.pet[i].contact.city.$t + ', ' + response.petfinder.pets.pet[i].contact.state.$t;
 
 
                 // Create new elements
@@ -182,7 +197,7 @@
                 var newDescription = document.createElement('h6');
                 newDescription.textContent = 'Description: ' + description;
 
-                var newContact = document.createElement('h6');
+                var newContact = document.createElement('h5');
                 newContact.textContent = 'Contact:';
                 newContact.setAttribute("style", "font-weight: bold");
 
@@ -191,7 +206,10 @@
 
                 var newContactEmail = document.createElement('h6');
                 newContactEmail.textContent = 'Email: ' + contactEmail;
-                newContactEmail.setAttribute("style", "margin-bottom: 20px");
+
+                var newContactCityState = document.createElement('h6');
+                newContactCityState.textContent = 'City/State: ' + contactCityState;
+                newContactCityState.setAttribute("style", "margin-bottom: 20px");
 
                 // var detailButton = document.createElement('a');
                 // detailButton = 'details';
@@ -213,6 +231,7 @@
                 slides.appendChild(newContact);
                 slides.appendChild(newContactPhone);
                 slides.appendChild(newContactEmail);
+                slides.appendChild(newContactCityState);
 
         				// list.appendChild(detailButton);
 
