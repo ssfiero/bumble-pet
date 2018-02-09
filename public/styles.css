@@ -32,6 +32,34 @@ Home page
 
 /*
 =========================
+SignUp page
+=========================
+*/
+
+#signUp {
+  background: linear-gradient(yellow, orange);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-size: 145%;
+  background-position: top;
+  text-align: center;
+  margin-top: 65px;
+}
+
+#titleSignUp h2 {
+  font-family: 'Yellowtail';
+  font-size: 80px;
+  margin-left: -21px;
+}
+
+.row .col.s12.signbox {
+  margin-bottom: 30px;
+}
+
+
+
+/*
+=========================
 Find page
 =========================
 */
@@ -46,9 +74,13 @@ Find page
 
 #titleFind h2 {
   color: #fff;
-  margin-top: 191px;
+  margin-top: 175px;
   font-size: 35px;
   text-align: center;
+}
+
+#findbox {
+  margin-top: 55px;
 }
 
 .row .col.s12 {
@@ -106,9 +138,28 @@ Match page
 
 #titleMatch {
   text-align: center;
+  margin-bottom: 25px;
+}
+
+#titleMatch h2 {
+  font-family: 'Yellowtail';
+  font-size: 65px;
+  margin-left: -21px;
+  margin-bottom: 10px;
+}
+
+.slides {
+  margin-bottom: 50px;
+  border: 3px solid orange;
+  border-radius: 8px;
 }
 
 img {
   height: 100%;
   width: 100%;
+  border-radius: 5px;
+}
+
+.slides h4 {
+  font-weight: bold;
 }

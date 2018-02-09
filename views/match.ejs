@@ -17,25 +17,6 @@
       <button class="btn waves-effect waves-light"><a href="/signout">Signout</a></button>
     </div>
 
-    <!-- <div class="card">
-
-        <div class="card-content">
-        </div>
-        <div class="card-tabs">
-          <ul class="tabs tabs-fixed-width">
-            <li class="tab"><a href="#About">About</a></li>
-            <li class="tab"><a class="active" href="#Description">Description</a></li>
-            <li class="tab"><a href="#Contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="card-content grey lighten-4">
-          <div id="About">About</div>
-          <div id="Description">Description</div>
-          <div id="Contact">Contact</div>
-        </div>
-
-    </div> -->
-
 
 
 
@@ -113,7 +94,7 @@
               console.log('Length of the pets array: ', pets.pet.length);
 
               let searchedPets = $();
-              // Loop through array pf pets
+              // Loop through array of pets
               for (var i = 0; i < pets.pet.length; i++) {
                 // console.log('In the loop');
                 console.log(pets.pet[i]);
@@ -121,9 +102,16 @@
 
                 // HOF forEach and filter to access larger sized image
                 var imgFinal = [];
+                console.log(response.petfinder.pets.pet[i].media.photos.photo);
+
+                // if (response.petfinder.pets.pet[i].media.photos.photo == 'undefined') {
+                //   console.log('Photo not available');
+                // } else {
                 var images = response.petfinder.pets.pet[i].media.photos.photo;
+                // }
                 console.log('Array of images: ', images);
 
+                // Loop through array of images
                 images.forEach(function(image) {
                   console.log('Images?: ', image);
                   console.log(typeof image);
@@ -132,13 +120,15 @@
                   // console.log('Object values: ', Object.values(image));
                   // console.log(Object.entries(image));
                   images.filter(function(imageobj){
-                    if (imageobj['@size'] == 'pn') {
+                    if (imageobj['@size'] == 'pn') { // or 'x'
                       console.log('Filtered image: ', imageobj.$t);
                       imgFinal.push(imageobj.$t);
                       return imageobj;
                     }
                   })
+
                 })
+
 
                 var img = imgFinal;
         				// var img = response.petfinder.pets.pet[i].media.photos.photo[0].$t;
@@ -171,8 +161,8 @@
 
 
                 // Create new elements
-                var cardDiv = document.createElement('div');
-                cardDiv.classList.add("slider");
+                var slider = document.createElement('div');
+                slider.classList.add("slider");
 
                 var newImg = document.createElement('img');
         				newImg.src = img;
@@ -194,40 +184,40 @@
 
                 var newContact = document.createElement('h6');
                 newContact.textContent = 'Contact:';
+                newContact.setAttribute("style", "font-weight: bold");
 
                 var newContactPhone = document.createElement('h6');
                 newContactPhone.textContent = 'Phone: ' + contactPhone;
 
                 var newContactEmail = document.createElement('h6');
                 newContactEmail.textContent = 'Email: ' + contactEmail;
+                newContactEmail.setAttribute("style", "margin-bottom: 20px");
 
                 // var detailButton = document.createElement('a');
                 // detailButton = 'details';
 
-        				var list = document.createElement("ul");
+        				var slides = document.createElement("ul");
         				// list.setAttribute("id", "List");
-                list.classList.add("slides");
-
-                // var listItem = document.createElement("li");
+                slides.classList.add("slides");
 
 
                 // Append new elements to page
+                // document.body.appendChild(slider);
+                document.body.appendChild(slides);
+                slides.appendChild(newImg);
+                slides.appendChild(newName);
+                slides.appendChild(newBreed);
+                slides.appendChild(newAge);
+                slides.appendChild(newSex);
+                slides.appendChild(newDescription);
+                slides.appendChild(newContact);
+                slides.appendChild(newContactPhone);
+                slides.appendChild(newContactEmail);
 
-                // list.appendChild(listItem);
-        				list.appendChild(newImg);
-                list.appendChild(newName);
-        				list.appendChild(newBreed);
-        				list.appendChild(newAge);
-        				list.appendChild(newSex);
-        				list.appendChild(newDescription);
-        				list.appendChild(newContact);
-        				list.appendChild(newContactPhone);
-        				list.appendChild(newContactEmail);
         				// list.appendChild(detailButton);
 
               }
-              document.body.appendChild(cardDiv);
-              cardDiv.appendChild(list);
+
       			}
       		});
 
