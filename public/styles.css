@@ -95,6 +95,19 @@ Match page
 =========================
 */
 
+#match {
+  background: linear-gradient(yellow, orange);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-size: 300%;
+  background-position: top;
+  text-align: center;
+}
+
+#titleMatch {
+  text-align: center;
+}
+
 img {
   height: 100%;
   width: 100%;

@@ -11,13 +11,13 @@
 
   <body id="match">
 
-    <div id="title">
+    <div id="titleMatch">
       <h2>Find your match</h2>
 
       <button class="btn waves-effect waves-light"><a href="/signout">Signout</a></button>
     </div>
 
-    <div class="card">
+    <!-- <div class="card">
 
         <div class="card-content">
         </div>
@@ -34,7 +34,7 @@
           <div id="Contact">Contact</div>
         </div>
 
-    </div>
+    </div> -->
 
 
 
@@ -172,9 +172,7 @@
 
                 // Create new elements
                 var cardDiv = document.createElement('div');
-                cardDiv.classList.add("card");
-
-                var newDiv = document.createElement('div');
+                cardDiv.classList.add("slider");
 
                 var newImg = document.createElement('img');
         				newImg.src = img;
@@ -206,13 +204,16 @@
                 // var detailButton = document.createElement('a');
                 // detailButton = 'details';
 
-                // Append new elements to page
         				var list = document.createElement("ul");
-        				list.setAttribute("id", "List");
-        				document.body.appendChild(list);
+        				// list.setAttribute("id", "List");
+                list.classList.add("slides");
 
-                document.body.appendChild(cardDiv);
-        				cardDiv.appendChild(newDiv);
+                // var listItem = document.createElement("li");
+
+
+                // Append new elements to page
+
+                // list.appendChild(listItem);
         				list.appendChild(newImg);
                 list.appendChild(newName);
         				list.appendChild(newBreed);
@@ -225,13 +226,17 @@
         				// list.appendChild(detailButton);
 
               }
-
+              document.body.appendChild(cardDiv);
+              cardDiv.appendChild(list);
       			}
       		});
 
       }
 
 
+      $(document).ready(function(){
+        $('.slider').slider();
+      });
 
     </script>
 
