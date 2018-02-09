@@ -15,9 +15,6 @@
       <h2>Find your match</h2>
 
       <button class="btn waves-effect waves-light"><a href="/signout">Signout</a></button>
-      <!-- <button class="btn waves-effect waves-light" type="submit" formaction="/signout" formmethod="GET">Signout
-        <i class="material-icons right">send</i>
-      </button> -->
     </div>
 
 
@@ -60,8 +57,6 @@
       document.addEventListener('DOMContentLoaded', bindButtons);
 
       function bindButtons(){
-      	// document.getElementById('submitSearch').addEventListener('click', function(event){
-      	// 	event.preventDefault();
 
       		var animalTypeFinal = animalTypeQuery; // get type of animal from the form
           console.log('Animal type entered in form: ', animalTypeFinal);
@@ -83,6 +78,8 @@
       				'animal': animalTypeFinal,
       				'location': cszFinal,
               count: 25,
+              // width: 600,
+              // '@size': '-$t',
       				output: 'basic',
       				format: 'json'
       			},
@@ -103,7 +100,37 @@
                 console.log(pets.pet[i]);
 
 
-        				var img = response.petfinder.pets.pet[i].media.photos.photo[0].$t;
+                // HOF forEach and filter to access larger sized image
+                var imgFinal = [];
+                var images = response.petfinder.pets.pet[i].media.photos.photo;
+                console.log('Array of images: ', images);
+
+                images.forEach(function(image) {
+                  console.log('Images?: ', image);
+                  console.log(typeof image);
+                  // console.log('Object entries: ', Object.entries(image));
+                  // console.log('Object keys: ', Object.keys(image));
+                  // console.log('Object values: ', Object.values(image));
+                  // console.log(Object.entries(image));
+                  images.filter(function(imageobj){
+                    if (imageobj['@size'] == 'pn') {
+                      console.log('Filtered image: ', imageobj.$t);
+                      imgFinal.push(imageobj.$t);
+                      return imageobj;
+                    }
+                    // else {
+                    //   if (imageobj['@size'] == 't') {
+                    //   console.log('Filtered image: ', imageobj.$t);
+                    //   imgFinal.push(imageobj.$t);
+                    //   return imageobj;
+                    //   }
+                    // }
+                  })
+                })
+
+                var img = imgFinal;
+        				// var img = response.petfinder.pets.pet[i].media.photos.photo[0].$t;
+
                 var dogName = response.petfinder.pets.pet[i].name.$t;
         				var id = response.petfinder.pets.pet[i].id.$t;
 
@@ -161,6 +188,8 @@
                 var newContactEmail = document.createElement('h6');
                 newContactEmail.textContent = 'Email: ' + contactEmail;
 
+                // var detailButton = document.createElement('a');
+                // detailButton = 'details';
 
                 // Append new elements to page
         				var list = document.createElement("ul");
@@ -177,14 +206,25 @@
         				list.appendChild(newContact);
         				list.appendChild(newContactPhone);
         				list.appendChild(newContactEmail);
+        				// list.appendChild(detailButton);
 
               }
 
       			}
       		});
-      	// })
 
       }
+
+
+      // $('detailButton').click(function() {
+      //   // var url = '/petdetail';
+      //   // var inputURL = $('list').val();
+      //   // //Redirects
+      //   // window.location.href = url + inputURL;
+      //   redirect('/petdetail');
+      //   // return false;
+      // })
+
     </script>
 
 

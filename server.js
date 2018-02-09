@@ -34,7 +34,7 @@ let signinRoute = require('./routes/signinRoute.js');
 let signupRoute = require('./routes/signupRoute.js');
 let findRoute = require('./routes/findRoute.js');
 let matchRoute = require('./routes/matchRoute.js');
-// let favsRoute = require('./routes/favsRoute.js');
+let petdetailRoute = require('./routes/petdetailRoute.js');
 let signoutRoute = require('./routes/signoutRoute.js');
 
 
@@ -65,6 +65,7 @@ app.use(signinRoute);
 app.use(signupRoute);
 app.use(findRoute);
 app.use(matchRoute);
+app.use(petdetailRoute);
 
 
 app.use(function(req, res, next) {
@@ -78,7 +79,6 @@ app.use(function(req, res, next) {
 });
 
 
-// app.use(favsRoute);
 app.use(signoutRoute);
 
 
