@@ -17,7 +17,8 @@ let bodyParser = require('body-parser');
 
 app.disable('x-powered-by');
 app.use(morgan('short'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit:50000}));
 
 
 // access static resources (images/css) in the 'public' folder
@@ -34,7 +35,7 @@ let signinRoute = require('./routes/signinRoute.js');
 let signupRoute = require('./routes/signupRoute.js');
 let findRoute = require('./routes/findRoute.js');
 let matchRoute = require('./routes/matchRoute.js');
-let petdetailRoute = require('./routes/petdetailRoute.js');
+// let petdetailRoute = require('./routes/petdetailRoute.js');
 let signoutRoute = require('./routes/signoutRoute.js');
 
 
@@ -65,7 +66,7 @@ app.use(signinRoute);
 app.use(signupRoute);
 app.use(findRoute);
 app.use(matchRoute);
-app.use(petdetailRoute);
+// app.use(petdetailRoute);
 
 
 app.use(function(req, res, next) {

@@ -17,25 +17,6 @@
       <button class="btn waves-effect waves-light"><a href="/signout">Signout</a></button>
     </div>
 
-    <div class="card">
-
-        <div class="card-content">
-        </div>
-        <div class="card-tabs">
-          <ul class="tabs tabs-fixed-width">
-            <li class="tab"><a href="#About">About</a></li>
-            <li class="tab"><a class="active" href="#Description">Description</a></li>
-            <li class="tab"><a href="#Contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="card-content grey lighten-4">
-          <div id="About">About</div>
-          <div id="Description">Description</div>
-          <div id="Contact">Contact</div>
-        </div>
-
-    </div>
-
 
 
 
@@ -171,9 +152,6 @@
 
 
                 // Create new elements
-                var cardDiv = document.createElement('div');
-                cardDiv.classList.add("card");
-
                 var newDiv = document.createElement('div');
 
                 var newImg = document.createElement('img');
@@ -211,8 +189,7 @@
         				list.setAttribute("id", "List");
         				document.body.appendChild(list);
 
-                document.body.appendChild(cardDiv);
-        				cardDiv.appendChild(newDiv);
+        				list.appendChild(newDiv);
         				list.appendChild(newImg);
                 list.appendChild(newName);
         				list.appendChild(newBreed);
@@ -232,6 +209,14 @@
       }
 
 
+      // $('detailButton').click(function() {
+      //   // var url = '/petdetail';
+      //   // var inputURL = $('list').val();
+      //   // //Redirects
+      //   // window.location.href = url + inputURL;
+      //   redirect('/petdetail');
+      //   // return false;
+      // })
 
     </script>
 

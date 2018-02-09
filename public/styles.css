@@ -4,13 +4,46 @@
 =========================
 Find page
 =========================
-
 */
+
+#find {
+  background-image: url("dogSmall.jpg");
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-size: 133%;
+  background-position: top;
+}
+
+#titleFind h2 {
+  color: #fff;
+  margin-top: 191px;
+  font-size: 35px;
+  text-align: center;
+}
+
+.row .col.s12 {
+  margin: auto;
+}
+
+.input-field.find {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: orange;
+}
+
+button.btn.waves-effect.waves-light {
+  margin: auto;
+  display: block;
+}
 
 a {
   color: #fff;
   letter-spacing: .5px;
 }
+
 
 
 
