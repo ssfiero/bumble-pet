@@ -1,4 +1,5 @@
-const config = require('./knexfile.js')['development'];
+const config = require('./knexfile.js')['production'];
+// const config = require('./knexfile.js')['development'];
   // console.log('Envir: ', process.env.ENVIRONMENT);
 const knex = require('knex')(config);
 const path = require('path');
@@ -87,7 +88,7 @@ app.use(function(req, res) {
   res.sendStatus(404);
 });
 
-
+// 
 let server = app.listen(port, function() {
   console.log('Listening on port', port);
 });

@@ -36,10 +36,10 @@ module.exports = {
   production: {
     client: 'pg',
     connection: {
-      host: "",
-      database: '',
-      user: '',
-      password: ''
+      host: "ec2-54-163-234-99.compute-1.amazonaws.com",
+      database: 'd3scsnv0s1e0a1',
+      user: 'golrigdpsnxwdn',
+      password: 'a40c1f16c87a4f949702e2b6800559aa13275fc41fdb4a6e0cb96457b2790e63'
     },
     pool: {
       min: 2,
