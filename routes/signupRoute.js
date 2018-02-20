@@ -40,10 +40,9 @@ router
     .catch(function(err) {
       console.log(err);
       if (err) {
-        res.sendStatus(500);
         res.redirect('/');
       }
-
+      res.sendStatus(500);
     });
 
 })
