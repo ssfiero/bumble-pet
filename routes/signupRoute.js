@@ -42,7 +42,7 @@ router
       if (err) {
         res.redirect('/');
       }
-      res.sendStatus(500);
+      // res.sendStatus(500);
     });
 
 })
