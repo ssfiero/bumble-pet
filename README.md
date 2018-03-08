@@ -4,13 +4,11 @@ A full stack mobile application that's like Bumble - but for animal shelter pets
 **Deployed Site: View on your mobile device!!** https://bumble-pet.herokuapp.com/
 
 
-
 ## Project Presentation
 
 Click slide below to view presentation details.
 
 [![Alt](bumblescreenshot.png)](Bumble-Pet.pdf)
-
 
 
 ## Build Tools
@@ -28,7 +26,6 @@ Click slide below to view presentation details.
 **Middleware:** Express-Session, bCrypt, morgan, body-parser
 
 
-
 ## Project Start Commands
 
 Knex make database migration: ```knex migrate:make migrationname```
@@ -44,3 +41,18 @@ Query database table: ```select * from tablename;```
 Exit out of database: ```\q```
 
 Start Server: ```nodemon```
+
+
+## Application Screenshots
+
+Home
+![Alt](/public/b1.png)
+
+Search
+![Alt](/public/b2.png)
+
+Search Results
+![Alt](/public/b3.png)
+
+Search Results Details
+![Alt](/public/b4.png)
