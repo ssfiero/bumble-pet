@@ -48,19 +48,19 @@ Start Server: ```nodemon```
 
 Home
 
-<img src="/public/b1.png" alt="alt text" width="50%" height="50%">
+<img src="/public/b1.png" alt="alt text" width="50%" height="40%">
 
 
 Search
 
-<img src="/public/b2.png" alt="alt text" width="50%" height="50%">
+<img src="/public/b2.png" alt="alt text" width="50%" height="40%">
 
 
 Search Results
 
-<img src="/public/b3.png" alt="alt text" width="50%" height="50%">
+<img src="/public/b3.png" alt="alt text" width="50%" height="40%">
 
 
 Search Results Details
 
-<img src="/public/b4.png" alt="alt text" width="50%" height="50%">
+<img src="/public/b4.png" alt="alt text" width="50%" height="40%">
