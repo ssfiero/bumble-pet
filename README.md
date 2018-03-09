@@ -8,7 +8,8 @@ A full stack mobile application that's like Bumble - but for animal shelter pets
 
 Click slide below to view presentation details.
 
-[![Alt](bumblescreenshot.png)](Bumble-Pet.pdf)
+<a href="Bumble-Pet.pdf"><img src="bumblescreenshot.png" width="75%" height="75%"></a>
+
 
 
 ## Build Tools
@@ -46,13 +47,20 @@ Start Server: ```nodemon```
 ## Application Screenshots
 
 Home
-![Alt](/public/b1.png)
+
+<img src="/public/b1.png" alt="alt text" width="50%" height="50%">
+
 
 Search
-![Alt](/public/b2.png)
+
+<img src="/public/b2.png" alt="alt text" width="50%" height="50%">
+
 
 Search Results
-![Alt](/public/b3.png)
+
+<img src="/public/b3.png" alt="alt text" width="50%" height="50%">
+
 
 Search Results Details
-![Alt](/public/b4.png)
+
+<img src="/public/b4.png" alt="alt text" width="50%" height="50%">
